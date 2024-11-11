@@ -1,0 +1,196 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Personal Finance Tracker API",
+      "description": "API untuk Manajemen Uang Pribadi"
+    },
+    "host": "localhost:3300",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/auth/register": {
+        "post": {
+          "summary": "Register User",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "User berhasil didaftarkan"
+            }
+          }
+        }
+      },
+      "/auth/login": {
+        "post": {
+          "summary": "Login User",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User credentials",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Login berhasil dan mengembalikan token JWT"
+            }
+          }
+        }
+      },
+      "/categories": {
+        "get": {
+          "summary": "Mendapatkan semua kategori",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Daftar kategori berhasil diambil"
+            }
+          }
+        },
+        "post": {
+          "summary": "Membuat kategori baru",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Kategori object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Kategori berhasil dibuat"
+            }
+          }
+        }
+      },
+      "/transactions": {
+        "get": {
+          "summary": "Mendapatkan semua transaksi",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Daftar transaksi berhasil diambil"
+            }
+          }
+        },
+        "post": {
+          "summary": "Membuat transaksi baru",
+          "parameters": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "type": "string",
+              "description": "Bearer token"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Transaksi object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Transaction"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Transaksi berhasil dibuat"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "User": {
+        "type": "object",
+        "required": ["username", "password"],
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "required": ["type", "amount", "categoryId", "date"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["income", "expense"]
+          },
+          "amount": {
+            "type": "number"
+          },
+          "categoryId": {
+            "type": "integer"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "securityDefinitions": {
+      "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "description": "Format: Bearer {token}"
+      }
+    }
+  }
