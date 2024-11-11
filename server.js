@@ -31,7 +31,7 @@ sequelize.authenticate()
     })
     .then(() => {
         console.log('Database & tables synchronized!');
-        const PORT = process.env.PORT || 3300;
+        const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => console.log(`Server berjalan di port ${PORT}`));
     })
     .catch(err => console.log('Error: ' + err));
