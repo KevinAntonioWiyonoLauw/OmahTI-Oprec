@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Nov 2024 pada 06.10
+-- Waktu pembuatan: 11 Nov 2024 pada 13.37
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -82,7 +82,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'testuser', '$2b$10$gPl41EUx96TEShkwz.Y7uOscuemlQquyEbvh7dq64vuGkAlt00bIK', '2024-11-11 01:30:26', '2024-11-11 01:30:26');
+(1, 'testuser', '$2b$10$gPl41EUx96TEShkwz.Y7uOscuemlQquyEbvh7dq64vuGkAlt00bIK', '2024-11-11 01:30:26', '2024-11-11 01:30:26'),
+(2, 'tes', '$2b$10$a.y2NFTR2I6/elizCwB1YOJZGygBydCeKHYALaZDo4IavrlH9fpzi', '2024-11-11 05:19:59', '2024-11-11 05:19:59');
 
 --
 -- Indexes for dumped tables
@@ -109,6 +110,11 @@ ALTER TABLE `categories`
   ADD UNIQUE KEY `name_14` (`name`),
   ADD UNIQUE KEY `name_15` (`name`),
   ADD UNIQUE KEY `name_16` (`name`),
+  ADD UNIQUE KEY `name_17` (`name`),
+  ADD UNIQUE KEY `name_18` (`name`),
+  ADD UNIQUE KEY `name_19` (`name`),
+  ADD UNIQUE KEY `name_20` (`name`),
+  ADD UNIQUE KEY `name_21` (`name`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -148,7 +154,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username_22` (`username`),
   ADD UNIQUE KEY `username_23` (`username`),
   ADD UNIQUE KEY `username_24` (`username`),
-  ADD UNIQUE KEY `username_25` (`username`);
+  ADD UNIQUE KEY `username_25` (`username`),
+  ADD UNIQUE KEY `username_26` (`username`),
+  ADD UNIQUE KEY `username_27` (`username`),
+  ADD UNIQUE KEY `username_28` (`username`),
+  ADD UNIQUE KEY `username_29` (`username`),
+  ADD UNIQUE KEY `username_30` (`username`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -158,7 +169,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `transactions`
@@ -170,7 +181,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -181,6 +192,10 @@ ALTER TABLE `users`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `categories_ibfk_10` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `categories_ibfk_11` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `categories_ibfk_12` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `categories_ibfk_13` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -188,6 +203,7 @@ ALTER TABLE `categories`
   ADD CONSTRAINT `categories_ibfk_6` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_ibfk_7` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_ibfk_8` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `categories_ibfk_9` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `categories_user_id_foreign_idx` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -220,7 +236,17 @@ ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_30` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_31` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_32` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_33` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_34` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_35` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_36` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_37` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_38` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_39` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_4` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_40` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_41` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_42` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_6` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `transactions_ibfk_7` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
