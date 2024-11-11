@@ -1,3 +1,5 @@
+> RESTful API using NodeJS, Express, and MySQL
+
 ## Installation
 
 1. **Clone the repository**
