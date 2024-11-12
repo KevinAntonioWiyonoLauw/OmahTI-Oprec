@@ -22,7 +22,7 @@
     ```
     
 ## Default Source
-<a href="https://oprec.kevinio.my.id/" target="_blank">oprec.kevinio.my.id</a>
+<a href="https://oprec.kevinio.my.id/" target="_blank">oprec.kevinio.my.id/${Endpoint}</a>
 
 ## Authentication
 All endpoints (except Register and Login) require authentication using JWT. To authenticate, include the token in the `Authorization` header as follows:
