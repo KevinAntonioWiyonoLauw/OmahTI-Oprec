@@ -13,11 +13,11 @@ const Category = sequelize.define('Category', {
         allowNull: false,
         unique: true
     },
-    userId: { // Pastikan ini ada dan sesuai
+    userId: { 
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Users', // Nama model Sequelize
+            model: 'Users', 
             key: 'id'
         }
     }

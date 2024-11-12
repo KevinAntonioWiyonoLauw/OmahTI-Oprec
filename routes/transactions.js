@@ -1,11 +1,11 @@
 // routes/transactions.js
 const express = require('express');
 const router = express.Router();
-const { Transaction, Category, sequelize } = require('../models'); // Pastikan 'sequelize' diimpor
+const { Transaction, Category, sequelize } = require('../models'); 
 const { authenticateToken } = require('../middleware/auth');
-const { Sequelize } = require('sequelize'); // Tambahkan ini
+const { Sequelize } = require('sequelize'); 
 
-// Terapkan middleware autentikasi ke semua rute di bawah ini
+// Terapkan middleware autentikasi ke semua rute di bawah
 router.use(authenticateToken);
 
 // GET /api/transactions - Mendapatkan semua transaksi untuk pengguna yang terautentikasi

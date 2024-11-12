@@ -2,11 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const { Category } = require('../models');
-const { authenticateToken } = require('../middleware/auth'); // Ensure the path is correct
+const { authenticateToken } = require('../middleware/auth'); 
 
 console.log('authenticateToken:', authenticateToken); // Debugging
 
-// Apply the authentication middleware to all routes below
+// Menggunakan middleware autentikasi untuk semua rute di bawah
 router.use(authenticateToken);
 
 // GET /api/categories - Ambil daftar kategori
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST /api/categories - Create a new category
+// POST /api/categories - Membuat kategori baru
 router.post('/', async (req, res) => {
     const { name } = req.body;
     
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        // Check if the category already exists for the user
+        // Cek apakah kategori sudah ada
         const existingCategory = await Category.findOne({
             where: { name, userId: req.user.id }
         });
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ message: 'Kategori sudah ada' });
         }
 
-        // Create the new category
+        // Buat kategori baru
         const category = await Category.create({
             name,
             userId: req.user.id

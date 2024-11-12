@@ -17,16 +17,16 @@ router.post('/register', async (req, res) => {
     }
 
     try {
-        // Check if the user already exists
+        // Cek apakah username sudah digunakan
         const existingUser = await User.findOne({ where: { username } });
         if (existingUser) {
             return res.status(400).json({ message: 'Username sudah digunakan' });
         }
 
-        // Hash the password before saving
+        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create the new user
+        // Create user
         const user = await User.create({ username, password: hashedPassword });
 
         res.status(201).json({ message: 'User berhasil didaftarkan' });
@@ -47,13 +47,13 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Username atau password salah' });
         }
 
-        // Compare the provided password with the hashed password
+        // Bandingkan password yang dimasukkan dengan password di database
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({ message: 'Username atau password salah' });
         }
         
-        // Create JWT with user ID and username
+        // Buat JWT token untuk user
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
         
         res.status(200).json({ token });
