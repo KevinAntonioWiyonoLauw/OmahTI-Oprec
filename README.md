@@ -4,7 +4,7 @@
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/KevinAntonioWiyonoLauw/OmahTI-Oprec
+    git clone https://github.com/KevinAntonioWiyonoLauw/OmahTI-Oprec.git
     ```
 
 2. **Install dependencies**
