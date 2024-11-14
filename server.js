@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json'); // Pastikan swagger.json ada di root
+const swaggerDocument = require('./swagger.json'); 
 
 dotenv.config();
 
