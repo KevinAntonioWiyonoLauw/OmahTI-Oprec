@@ -15,7 +15,7 @@ app.use(express.json());
 // Swagger Route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Rute
+// Route
 app.get('/', (req, res) => {
     res.send('Oprec BackEnd OmahTI');
 });
